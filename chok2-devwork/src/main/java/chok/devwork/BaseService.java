@@ -1,9 +1,7 @@
-package chok.devwork.springboot;
+package chok.devwork;
 
 import java.util.List;
 import java.util.Map;
-
-import chok.devwork.Page;
 
 public abstract class BaseService<T,PK> 
 {
@@ -79,17 +77,6 @@ public abstract class BaseService<T,PK>
 		return getEntityDao().getCount(m);
 	}
 
-	/**
-	 * 分页查询
-	 * @param countPageEach 可点击页码个数 
-	 * @param m 表单查询参数
-	 * @return Page对象
-	 */
-	public Page<T> getPage(int countPageEach, Map<String, Object> m)
-	{
-		return getEntityDao().getPage(countPageEach, m);
-	}
-	
 	public List queryMapPage(Map<String, Object> m)
 	{
 		return getEntityDao().queryMapPage(m);

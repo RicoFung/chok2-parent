@@ -20,6 +20,8 @@
 	</properties>
 
 	<dependencies>
+		<!-- spring-boot-security -->
+		<dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-security</artifactId></dependency>
 		<!-- chok -->
 		<dependency><groupId>com.chok2</groupId><artifactId>chok2-util</artifactId></dependency>
 	</dependencies>

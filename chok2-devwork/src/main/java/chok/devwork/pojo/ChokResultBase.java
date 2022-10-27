@@ -1,12 +1,14 @@
-package chok.devwork.springboot.pojo;
+package chok.devwork.pojo;
 
 import chok.common.RestConstants;
 
-public class ChokResult<T>
+public abstract class ChokResultBase<T> implements ChokResultInterface<T>
 {
+	private static final long serialVersionUID = 1L;
+	
 	private boolean	success		= true;
 	private String	code		= RestConstants.SUCCESS_CODE;
-	private String	msg			= "Success!";
+	private String	msg			= "";
 	private String	path		= "";
 	private String	timestamp	= "";
 	private T		data;
@@ -15,46 +17,63 @@ public class ChokResult<T>
 	{
 		return success;
 	}
-	public void setSuccess(boolean success)
-	{
-		this.success = success;
-	}
+
 	public String getCode()
 	{
 		return code;
 	}
-	public void setCode(String code)
-	{
-		this.code = code;
-	}
+
 	public String getMsg()
 	{
 		return msg;
 	}
-	public void setMsg(String msg)
-	{
-		this.msg = msg;
-	}
+
 	public String getPath()
 	{
 		return path;
 	}
-	public void setPath(String path)
-	{
-		this.path = path;
-	}
+
 	public String getTimestamp()
 	{
 		return timestamp;
 	}
-	public void setTimestamp(String timestamp)
-	{
-		this.timestamp = timestamp;
-	}
+
 	public T getData()
 	{
 		return data;
 	}
+	
+	@Override
+	public void setSuccess(boolean success)
+	{
+		this.success = success;
+	}
+
+	@Override
+	public void setCode(String code)
+	{
+		this.code = code;
+	}
+	
+	@Override
+	public void setMsg(String msg)
+	{
+		this.msg = msg;
+	}
+
+	@Override
+	public void setPath(String path)
+	{
+		this.path = path;
+	}
+
+	@Override
+	public void setTimestamp(String timestamp)
+	{
+		this.timestamp = timestamp;
+	}
+
+	@Override
 	public void setData(T data)
 	{
 		this.data = data;

@@ -1,4 +1,4 @@
-package chok.devwork.springboot;
+package chok.devwork;
 
 import java.util.List;
 import java.util.Map;
@@ -6,8 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.google.common.collect.Lists;
-
-import chok.devwork.Page;
 
 
 public abstract class BaseDao<T,PK>
@@ -202,30 +200,6 @@ public abstract class BaseDao<T,PK>
 		return (Integer) this.getSqlSession().selectOne(getStatementName("getCount"), m);
 	}
 
-	/**
-	 * 分页查询
-	 * @param countPageEach 可点击页码个数 
-	 * @param m 表单查询参数
-	 * @return Page对象
-	 */
-	public Page<T> getPage(int countPageEach, Map<String, Object> m)
-	{
-		int curPage = !m.containsKey("offset")?DEFAULT_OFFSET:Integer.parseInt(m.get("offset").toString());
-		int limit = !m.containsKey("limit")?DEFAULT_LIMIT:Integer.parseInt(m.get("limit").toString());
-		int offset = curPage*limit-(limit-1);
-		//总记录数
-		int totalCount = getCount(m);
-		//总页码
-		int countPage = totalCount%limit>0?totalCount/limit+1:totalCount/limit;
-		//mysql index 从0开始，所以要减一；oracle index 从1开始
-		offset--;
-		
-		m.put("offset", String.valueOf(offset));
-		m.put("limit", String.valueOf(limit));
-		List<T> result = query(m);
-		return new Page<T>(curPage, countPage, countPageEach, limit, result);
-	}
-	
 	public List queryMapPage(Map<String, Object> m)
 	{
 		List result = queryMap(m);

@@ -1,4 +1,4 @@
-package chok.devwork.springboot;
+package chok.devwork;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
