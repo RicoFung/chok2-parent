@@ -1,4 +1,4 @@
-package chok.devwork.controller;
+package chok.devwork.handler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +17,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import chok.common.RestConstants;
 import chok.devwork.pojo.ChokResultBase;
 
-public class Handler<T, R extends ChokResultBase<T>>
+public class CHandler<T, R extends ChokResultBase<T>>
 {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	
 	protected ObjectMapper objMapper = new ObjectMapper();
 	
-	public R execute(Object paramDTO, R resultDTO, BindingResult validResult, Callback<T, R> callback)
+	public R execute(Object paramDTO, BindingResult validResult, R resultDTO, Callback<T, R> callback)
 	{
 		try
 		{
