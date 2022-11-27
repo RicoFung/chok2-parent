@@ -2,7 +2,7 @@ package chok.devwork.pojo;
 
 import java.io.Serializable;
 
-public interface ChokResultInterface<T> extends Serializable
+public interface ChokDtoInterface<T> extends Serializable
 {
 	boolean isSuccess();
 

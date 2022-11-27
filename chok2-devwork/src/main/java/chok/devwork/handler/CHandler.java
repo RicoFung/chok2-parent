@@ -15,9 +15,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import chok.common.RestConstants;
-import chok.devwork.pojo.ChokResultBase;
+import chok.devwork.pojo.ChokDtoBase;
 
-public class CHandler<T, R extends ChokResultBase<T>>
+public class CHandler<T, R extends ChokDtoBase<T>>
 {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	
@@ -103,7 +103,7 @@ public class CHandler<T, R extends ChokResultBase<T>>
 		return validMsgList;
 	}
 	
-	public abstract static class Callback<T, R extends ChokResultBase<T>>
+	public abstract static class Callback<T, R extends ChokDtoBase<T>>
 	{
 		/**
 		 * 执行进行

@@ -1,13 +1,13 @@
 package chok.devwork.pojo;
 
-public class ChokResultBO<T> extends ChokResultBase<T>
+public class ChokDto<T> extends ChokDtoBase<T>
 {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	public String toString()
 	{
-		return "ChokResultBO [toString()=" + super.toString() + "]";
+		return "ChokResultDTO [toString()=" + super.toString() + "]";
 	}
 
 }

@@ -2,7 +2,7 @@ package chok.devwork.pojo;
 
 import chok.common.RestConstants;
 
-public abstract class ChokResultBase<T> implements ChokResultInterface<T>
+public abstract class ChokDtoBase<T> implements ChokDtoInterface<T>
 {
 	private static final long serialVersionUID = 1L;
 	
