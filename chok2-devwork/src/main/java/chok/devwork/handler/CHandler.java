@@ -23,47 +23,47 @@ public class CHandler<T, R extends ChokResultBase<T>>
 	
 	protected ObjectMapper objMapper = new ObjectMapper();
 	
-	public R execute(Object paramDTO, BindingResult validResult, R resultDTO, Callback<T, R> callback)
+	public R execute(Object ro, BindingResult br, R dto, Callback<T, R> callback)
 	{
 		try
 		{
 			// 获取操作用户信息
-			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			// 创建时间
-			Long tcTime = System.currentTimeMillis();
+			Long time = System.currentTimeMillis();
 			if (log.isDebugEnabled())
 			{
-				log.debug("==> requestDto：{}", objMapper.writeValueAsString(paramDTO));
+				log.debug("==> ro：{}", objMapper.writeValueAsString(ro));
 			}
-			if (validResult != null && validResult.hasErrors())
+			if (br != null && br.hasErrors())
 			{
-				resultDTO.setSuccess(false);
-				resultDTO.setCode(RestConstants.ERROR_CODE1);
-				resultDTO.setMsg(getValidMsgs(validResult));
-				return resultDTO;
+				dto.setSuccess(false);
+				dto.setCode(RestConstants.ERROR_CODE1);
+				dto.setMsg(getValidMsgs(br));
+				return dto;
 			}
 			// executeProcess
-			resultDTO = callback.process(resultDTO, authentication, tcTime);
-			if (resultDTO.isSuccess())
+			dto = callback.process(dto, auth, time);
+			if (dto.isSuccess())
 			{
 				// executeSuccess
-				callback.success(resultDTO);
+				callback.success(dto);
 			}
 			else
 			{
 				// executeError
-				callback.error(resultDTO);
-				log.error(resultDTO.getMsg());
+				callback.error(dto);
+				log.error(dto.getMsg());
 			}
 		}
 		catch (Exception e)
 		{
 			log.error("<== Exception：{}", e);
-			resultDTO.setSuccess(false);
-			resultDTO.setCode(RestConstants.ERROR_CODE1);
-			resultDTO.setMsg(e.getMessage());
+			dto.setSuccess(false);
+			dto.setCode(RestConstants.ERROR_CODE1);
+			dto.setMsg(e.getMessage());
 			// executeError
-			callback.error(resultDTO);
+			callback.error(dto);
 		}
 		finally
 		{
@@ -71,7 +71,7 @@ public class CHandler<T, R extends ChokResultBase<T>>
 			{
 				try
 				{
-					log.debug("<== get-responseDto：{}", objMapper.writeValueAsString(resultDTO));
+					log.debug("<== dto：{}", objMapper.writeValueAsString(dto));
 				}
 				catch (JsonProcessingException e)
 				{
@@ -79,7 +79,7 @@ public class CHandler<T, R extends ChokResultBase<T>>
 				}
 			}
 		}
-		return resultDTO;
+		return dto;
 	}
 	
 	protected String getValidMsgs(BindingResult validResult)
@@ -108,34 +108,34 @@ public class CHandler<T, R extends ChokResultBase<T>>
 		/**
 		 * 执行进行
 		 * 
-		 * @param resultDTO
-		 * @param authentication
-		 * @param tcTime
+		 * @param dto
+		 * @param auth
+		 * @param time
 		 * @return
 		 * @throws Exception
 		 */
-		protected abstract R process(R resultDTO, Authentication authentication, Long tcTime) throws Exception;
+		protected abstract R process(R dto, Authentication auth, Long time) throws Exception;
 
 		/**
 		 * 执行成功
 		 * 
-		 * @param resultDTO
+		 * @param dto
 		 * @return
 		 */
-		protected R success(R resultDTO)
+		protected R success(R dto)
 		{
-			return resultDTO;
+			return dto;
 		}
 
 		/**
 		 * 执行失败
 		 * 
-		 * @param resultDTO
+		 * @param dto
 		 * @return
 		 */
-		protected R error(R resultDTO)
+		protected R error(R dto)
 		{
-			return resultDTO;
+			return dto;
 		}
 
 	}
