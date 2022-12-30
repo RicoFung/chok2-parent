@@ -13,6 +13,17 @@ public abstract class ChokDtoBase<T> implements ChokDtoInterface<T>
 	private String	timestamp	= "";
 	private T		data;
 	
+	public ChokDtoBase()
+	{
+		super();
+	}
+
+	public ChokDtoBase(T data)
+	{
+		super();
+		this.data = data;
+	}
+
 	public boolean isSuccess()
 	{
 		return success;
