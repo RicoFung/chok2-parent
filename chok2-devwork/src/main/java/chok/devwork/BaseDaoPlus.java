@@ -34,66 +34,6 @@ public abstract class BaseDaoPlus
 		return _statement + statementName;
 	}
 	
-	public int add(String statementName, Object entity)
-	{
-		return this.getSqlSession().insert(getStatementName(statementName), entity);
-	}
-	
-	public int del(String statementName, String[] ids)
-	{
-		return this.getSqlSession().delete(getStatementName(statementName), ids);
-	}
-	
-	public int upd(String statementName, Object entity)
-	{
-		return this.getSqlSession().update(getStatementName(statementName), entity);
-	}
-	
-	public <T> T getOne(String statementName, Object query)
-	{
-		return this.getSqlSession().selectOne(getStatementName(statementName), query);
-	}
-	
-	public <E> List<E> getList(String statementName, Object query)
-	{
-		return this.getSqlSession().selectList(getStatementName(statementName), query);
-	}
-	
-	public int getCount(String statementName, Object query)
-	{
-		return this.getSqlSession().selectOne(getStatementName(statementName), query);
-	}
-	
-	public int add(Object entity)
-	{
-		return this.getSqlSession().insert(getStatementName("add"), entity);
-	}
-	
-	public int del(String[] ids)
-	{
-		return this.getSqlSession().delete(getStatementName("del"), ids);
-	}
-	
-	public int upd(Object entity)
-	{
-		return this.getSqlSession().update(getStatementName("upd"), entity);
-	}
-	
-	public <T> T getOne(Object query)
-	{
-		return this.getSqlSession().selectOne(getStatementName("getOne"), query);
-	}
-	
-	public <E> List<E> getList(Object query)
-	{
-		return this.getSqlSession().selectList(getStatementName("getList"), query);
-	}
-	
-	public int getCount(Object query)
-	{
-		return this.getSqlSession().selectOne(getStatementName("getCount"), query);
-	}
-	
 	public int create(String statementName, Object entity)
 	{
 		return this.getSqlSession().insert(getStatementName(statementName), entity);
@@ -122,6 +62,36 @@ public abstract class BaseDaoPlus
 	public int modify(Object entity)
 	{
 		return this.getSqlSession().update(getStatementName("modify"), entity);
+	}
+	
+	public <T> T getOne(String statementName, Object query)
+	{
+		return this.getSqlSession().selectOne(getStatementName(statementName), query);
+	}
+	
+	public <E> List<E> getList(String statementName, Object query)
+	{
+		return this.getSqlSession().selectList(getStatementName(statementName), query);
+	}
+	
+	public int getCount(String statementName, Object query)
+	{
+		return this.getSqlSession().selectOne(getStatementName(statementName), query);
+	}
+	
+	public <T> T getOne(Object query)
+	{
+		return this.getSqlSession().selectOne(getStatementName("getOne"), query);
+	}
+	
+	public <E> List<E> getList(Object query)
+	{
+		return this.getSqlSession().selectList(getStatementName("getList"), query);
+	}
+	
+	public int getCount(Object query)
+	{
+		return this.getSqlSession().selectOne(getStatementName("getCount"), query);
 	}
 	
 }
