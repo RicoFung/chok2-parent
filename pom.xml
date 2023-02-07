@@ -49,7 +49,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.boot.version>2.5.7</spring.boot.version>
 		<spring.security.oauth2.version>2.4.0.RELEASE</spring.security.oauth2.version>
-		<spring.security.oauth2.autoconfigure.version>2.4.0</spring.security.oauth2.autoconfigure.version>
 		<spring-security-oauth2-authorization-server.version>0.2.3</spring-security-oauth2-authorization-server.version>
 		<mybatis.spring.boot.version>2.0.1</mybatis.spring.boot.version>
 		<druid.spring.boot.version>1.1.10</druid.spring.boot.version>
@@ -139,19 +138,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
-		<!-- tomcat-embed-jasper 用于编译jsp -->
-		<!-- 升级至 springboot 2.3.0 会造成包冲突 jaxb-* 
-		<dependency> 
-			<groupId>org.apache.tomcat.embed</groupId> 
-			<artifactId>tomcat-embed-jasper</artifactId> 
-			<scope>provided</scope> 
-		</dependency> -->
-		<!-- jstl jsp页面使用jstl标签 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-		</dependency>
-		-->
 		<!-- 其他工具包 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -253,7 +239,6 @@
 				<artifactId>spring-boot-starter-web</artifactId>
 				<version>${spring.boot.version}</version>
 			</dependency>
-			
 			<!-- spring-security-oauth2 -->
 	        <dependency>
 	            <groupId>org.springframework.boot</groupId>
@@ -275,22 +260,6 @@
 	            <artifactId>spring-security-oauth2-authorization-server</artifactId>
 	            <version>${spring-security-oauth2-authorization-server.version}</version>
 	        </dependency>
-	        
-			<!-- spring-boot-security oauth2 
-			<dependency>
-				<groupId>org.springframework.security.oauth</groupId>
-				<artifactId>spring-security-oauth2</artifactId>
-				<version>${spring.security.oauth2.version}</version>
-			</dependency>
-			-->
-			<!-- spring-boot-security oauth2-autoconfigure 
-			<dependency>
-				<groupId>org.springframework.security.oauth.boot</groupId>
-				<artifactId>spring-security-oauth2-autoconfigure</artifactId>
-				<version>${spring.security.oauth2.autoconfigure.version}</version>
-			</dependency>
-			-->
-			
 			<!-- spring-boot atomikos 分布式事务 -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -411,23 +380,6 @@
 				<artifactId>springdoc-openapi-ui</artifactId>
 				<version>${springdoc.version}</version>
 			</dependency>	
-			<!--swagger 
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger2</artifactId>
-				<version>${swagger.version}</version>
-			</dependency>
-			<dependency>
-	            <groupId>io.springfox</groupId>
-	            <artifactId>springfox-boot-starter</artifactId>
-	            <version>${swagger.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger-ui</artifactId>
-				<version>${swagger.version}</version>
-			</dependency>
-			-->
 			<!-- quartz -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
