@@ -1,7 +1,10 @@
 package chok.util;
 
+import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.commons.lang3.time.DateUtils;
 
 public class ValidationUtil
 {
@@ -33,6 +36,25 @@ public class ValidationUtil
 		boolean isMatched = matcher.matches();  
 		System.out.println(isMatched); 
 		return isMatched;
+	}
+	
+	/**
+	 * 校验日期格式 
+	 * @param date
+	 * @param format
+	 * @return boolean
+	 */
+	public static boolean checkDateFormat(String date, String format)
+	{
+		try
+		{
+			DateUtils.parseDateStrictly(date, format);
+			return true;
+		}
+		catch (ParseException e)
+		{
+			return false;
+		}
 	}
 	
 	public static void main(String[] args)
