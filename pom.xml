@@ -38,11 +38,12 @@
 		<module>chok2-common</module>
 		<module>chok2-component</module>
 		<module>chok2-util</module>
-		<module>chok2-redis</module>
 		<module>chok2-lock</module>
 		<module>chok2-jwt</module>
-		<module>chok2-devwork</module>
-		<module>chok2-oauth2</module>
+		<module>chok2-devwork-controller</module>
+		<module>chok2-devwork-service</module>
+		<module>chok2-devwork-dao</module>
+		<module>chok2-devwork-pojo</module>
 	</modules>
 
 	<properties>
@@ -89,65 +90,13 @@
 	</properties>
 
 	<dependencies>
-		<!-- spring-boot-starter-thymeleaf -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<!-- spring-boot-devtools 用于开发环境热部署
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-		</dependency>
-		 -->
-		<!-- spring-boot-starter-tomcat 打包时，把内嵌的tomcat排除掉 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		-->
-		<!-- spring-boot-starter-data-redis -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-		<!-- spring-boot-starter-test -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-		</dependency>
-		<!-- mybatis-spring-boot-starter -->
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>${mybatis.spring.boot.version}</version>
-		</dependency>
-		<!-- mybatis-redis 
-		<dependency> 
-			<groupId>redis.clients</groupId> 
-			<artifactId>jedis</artifactId> 
-		</dependency> 
-		<dependency> 
-			<groupId>org.mybatis.caches</groupId> 
-			<artifactId>mybatis-redis</artifactId> 
-			<version>1.0.0-beta2</version> 
-			</dependency> 
-		-->
-		<!-- spring-boot jdbc -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-		<!-- 其他工具包 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>${fastjson.version}</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -170,17 +119,6 @@
 			<version>${commons-fileupload.version}</version>
 		</dependency>
 		
-		<!-- 
-		<dependency>
-		    <groupId>jakarta.servlet</groupId>
-		    <artifactId>jakarta.servlet-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-		</dependency>
-		 -->
-		 
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
@@ -200,18 +138,9 @@
 			<version>${commons-beanutils.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>ognl</groupId>
-			<artifactId>ognl</artifactId>
-			<version>${ognl.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.vintage</groupId>
@@ -248,6 +177,57 @@
 				<artifactId>spring-boot-starter-web</artifactId>
 				<version>${spring.boot.version}</version>
 			</dependency>
+			<!-- spring-boot-starter-validation -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-validation</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+
+			<!-- spring-boot-starter-thymeleaf -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-thymeleaf</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<!-- spring-boot-devtools 用于开发环境热部署
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+			</dependency>
+			 -->
+			<!-- spring-boot-starter-tomcat 打包时，把内嵌的tomcat排除掉 
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-tomcat</artifactId>
+				<scope>provided</scope>
+			</dependency>
+			-->
+			<!-- spring-boot-starter-data-redis -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-redis</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<!-- spring-boot-starter-test -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>
+			<!-- mybatis-spring-boot-starter -->
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis.spring.boot.version}</version>
+			</dependency>
+			<!-- spring-boot jdbc -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-jdbc</artifactId>
+				<version>${spring.boot.version}</version>
+			</dependency>			
+			
 			<!-- spring-security-oauth2 -->
 	        <dependency>
 	            <groupId>org.springframework.boot</groupId>
@@ -427,11 +407,17 @@
 				<artifactId>sqljdbc4</artifactId>
 				<version>${sqljdbc4.version}</version>
 			</dependency>
-			<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
+			<!-- ognl -->
 			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-collections4</artifactId>
-				<version>${commons-collections4.version}</version>
+				<groupId>ognl</groupId>
+				<artifactId>ognl</artifactId>
+				<version>${ognl.version}</version>
+			</dependency>
+			<!-- fastjson -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
 			</dependency>
 			<!-- hutool -->
 			<dependency>
@@ -462,11 +448,6 @@
 			</dependency>
 			<dependency>
 				<groupId>com.chok2</groupId>
-				<artifactId>chok2-redis</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.chok2</groupId>
 				<artifactId>chok2-lock</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -477,12 +458,22 @@
 			</dependency>
 			<dependency>
 				<groupId>com.chok2</groupId>
-				<artifactId>chok2-devwork</artifactId>
+				<artifactId>chok2-devwork-controller</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.chok2</groupId>
-				<artifactId>chok2-oauth2</artifactId>
+				<artifactId>chok2-devwork-service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.chok2</groupId>
+				<artifactId>chok2-devwork-dao</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.chok2</groupId>
+				<artifactId>chok2-devwork-pojo</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>

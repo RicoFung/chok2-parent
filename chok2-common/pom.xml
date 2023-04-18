@@ -7,20 +7,23 @@
 	<artifactId>chok2-common</artifactId>
 	<name>chok2-common</name>
 	<packaging>jar</packaging>
-	
+
 	<parent>
 		<groupId>com.chok2</groupId>
 		<artifactId>chok2-parent</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
+
 	<dependencies>
-		<!-- spring-boot WEB支持 -->
-		<dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId></dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		</dependency>
 	</dependencies>
+	
 </project>
