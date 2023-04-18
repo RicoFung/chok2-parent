@@ -4,8 +4,8 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>chok2-jwt</artifactId>
-	<name>chok2-jwt</name>
+	<artifactId>chok2-devwork-controller</artifactId>
+	<name>chok2-devwork-controller</name>
 	<packaging>jar</packaging>
 
 	<parent>
@@ -20,17 +20,30 @@
 	</properties>
 
 	<dependencies>
+		<!-- spring-boot WEB支持 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- spring-boot-starter-validation -->
 		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+		<!-- spring-boot-security -->
 		<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- spring-boot-starter-test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<!-- chok -->
+		<dependency>
+			<groupId>com.chok2</groupId>
+			<artifactId>chok2-util</artifactId>
 		</dependency>
 	</dependencies>
 </project>
