@@ -64,34 +64,34 @@ public abstract class BaseDao
 		return this.getSqlSession().update(getStatementName("modify"), entity);
 	}
 	
-	public <T> T getOne(String statementName, Object query)
+	public <T> T getOne(String statementName, Object param)
 	{
-		return this.getSqlSession().selectOne(getStatementName(statementName), query);
+		return this.getSqlSession().selectOne(getStatementName(statementName), param);
 	}
 	
-	public <E> List<E> getList(String statementName, Object query)
+	public <E> List<E> getList(String statementName, Object param)
 	{
-		return this.getSqlSession().selectList(getStatementName(statementName), query);
+		return this.getSqlSession().selectList(getStatementName(statementName), param);
 	}
 	
-	public int getCount(String statementName, Object query)
+	public int getCount(String statementName, Object param)
 	{
-		return this.getSqlSession().selectOne(getStatementName(statementName), query);
+		return this.getSqlSession().selectOne(getStatementName(statementName), param);
 	}
 	
-	public <T> T getOne(Object query)
+	public <T> T getOne(Object param)
 	{
-		return this.getSqlSession().selectOne(getStatementName("getOne"), query);
+		return this.getSqlSession().selectOne(getStatementName("getOne"), param);
 	}
 	
-	public <E> List<E> getList(Object query)
+	public <E> List<E> getList(Object param)
 	{
-		return this.getSqlSession().selectList(getStatementName("getList"), query);
+		return this.getSqlSession().selectList(getStatementName("getList"), param);
 	}
 	
-	public int getCount(Object query)
+	public int getCount(Object param)
 	{
-		return this.getSqlSession().selectOne(getStatementName("getCount"), query);
+		return this.getSqlSession().selectOne(getStatementName("getCount"), param);
 	}
 	
 }
