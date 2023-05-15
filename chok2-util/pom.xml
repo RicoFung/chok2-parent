@@ -7,28 +7,51 @@
 	<artifactId>chok2-util</artifactId>
 	<name>chok2-util</name>
 	<packaging>jar</packaging>
-	
+
 	<parent>
 		<groupId>com.chok2</groupId>
 		<artifactId>chok2-parent</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
+
 	<dependencies>
-		<!-- chok -->
-		<dependency><groupId>com.chok2</groupId><artifactId>chok2-common</artifactId></dependency>
+		<!-- spring-boot WEB支持 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- spring-boot-starter-thymeleaf -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 		<!-- spring-boot mail -->
-		<dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-mail</artifactId></dependency>
-        <!-- poi -->
-        <dependency><groupId>org.apache.poi</groupId><artifactId>poi</artifactId></dependency>
-		<dependency><groupId>org.apache.poi</groupId><artifactId>poi-ooxml</artifactId></dependency>
-		<dependency><groupId>org.apache.poi</groupId><artifactId>poi-ooxml-schemas</artifactId></dependency>
-		<dependency><groupId>org.apache.poi</groupId><artifactId>poi-scratchpad</artifactId></dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<!-- poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+		</dependency>
 		<!-- jasperreports -->
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
@@ -37,6 +60,11 @@
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports-fonts</artifactId>
+		</dependency>
+		<!-- chok -->
+		<dependency>
+			<groupId>com.chok2</groupId>
+			<artifactId>chok2-common</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.chok</groupId>
