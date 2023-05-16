@@ -67,7 +67,7 @@
 			<artifactId>chok2-common</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.chok</groupId>
+			<groupId>com.chok2</groupId>
 			<artifactId>font-msyh</artifactId>
 		</dependency>
 	</dependencies>

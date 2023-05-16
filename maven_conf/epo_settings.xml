@@ -7,21 +7,21 @@
 	<servers>
 		<server>
 			<!--这是server的id（注意不是用户登陆的id），该id与distributionManagement中repository元素的id相匹配。 -->
-			<id>maven-releases</id>
+			<id>uat-repo</id>
 			<!-- nexus 用户密码 -->
 			<username>zhuojun.feng</username>
 			<password>123456789</password>
 		</server>
 		<server>
 			<!--这是server的id（注意不是用户登陆的id），该id与distributionManagement中repository元素的id相匹配。 -->
-			<id>maven-snapshots</id>
+			<id>prd-repo</id>
 			<!-- nexus 用户密码 -->
 			<username>zhuojun.feng</username>
 			<password>123456789</password>
 		</server>
 	</servers>
 	
-	<!-- 给定仓库的下载镜像。 -->
+	<!-- 给定仓库的下载镜像。【非必用：内外网隔离时，url是否可访问；根据当前环境判断是否使用】 -->
 	<mirrors>
 		<mirror>
 			<!-- 该镜像的唯一标识符。id用来区分不同的mirror元素。 -->
@@ -34,4 +34,32 @@
 			<mirrorOf>central</mirrorOf>
 		</mirror>
 	</mirrors>
+	
+    <!-- 配置多环境profile -->
+    <profiles>
+        <profile>
+            <id>uat</id>
+            <repositories>
+                <repository>
+                    <id>maven-releases</id>
+                    <name>UAT Repository</name>
+                    <url>http://nexusuat.moco.com:80/repository/maven-releases/</url>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>prd</id>
+            <repositories>
+                <repository>
+                    <id>maven-releases</id>
+                    <name>PRD Repository</name>
+                    <url>http://nexus.moco.com:80/repository/maven-releases/</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+    <!-- 指定默认 profile -->
+    <activeProfiles>
+    	<activeProfile>uat</activeProfile>
+    </activeProfiles>
 </settings>

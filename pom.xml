@@ -3,59 +3,27 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!--本Project識別 -->
 	<groupId>com.chok2</groupId>
 	<artifactId>chok2-parent</artifactId>
 	<version>1.0.0</version>
-	<!--表示打包Project的型態,可能為Jar、war、ear或pom，若是使用了android 則為apk -->
 	<packaging>pom</packaging>
-	<!--以下是給工具看的,主要是本Project的資訊 -->
 	<name>chok2-parent</name>
-
-	<!-- 指定JDK -->
-	<profiles>
-		<profile>
-			<id>jdk-1.8</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-				<jdk>1.8</jdk>
-			</activation>
-			<properties>
-				<maven.compiler.source>1.8</maven.compiler.source>
-				<maven.compiler.target>1.8</maven.compiler.target>
-				<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
-			</properties>
-		</profile>
-	</profiles>
-
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.10</version>
-	</parent>
-
-	<modules>
-		<module>chok2-common</module>
-		<module>chok2-component</module>
-		<module>chok2-util</module>
-		<module>chok2-lock</module>
-		<module>chok2-jwt</module>
-		<module>chok2-devwork-controller</module>
-		<module>chok2-devwork-service</module>
-		<module>chok2-devwork-dao</module>
-		<module>chok2-devwork-pojo</module>
-	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+		
 		<spring.boot.version>2.7.10</spring.boot.version>
 		<spring.security.oauth2.version>2.4.0.RELEASE</spring.security.oauth2.version>
 		<spring-security-oauth2-authorization-server.version>0.2.3</spring-security-oauth2-authorization-server.version>
+		<spring-session-data-redis.version>2.7.0</spring-session-data-redis.version>
+		<spring-boot-starter-quartz.version>2.3.2.RELEASE</spring-boot-starter-quartz.version>
 		<mybatis.spring.boot.version>2.0.1</mybatis.spring.boot.version>
 		<druid.spring.boot.version>1.1.10</druid.spring.boot.version>
-		<spring-session-data-redis.version>2.7.0</spring-session-data-redis.version>
+		<redisson-spring-boot-starter.version>3.11.5</redisson-spring-boot-starter.version>
 		
-		<mysql-connector.version>5.1.46</mysql-connector.version>
 		<poi.version>3.15</poi.version>
 		<cxf.version>3.2.0</cxf.version>
 		<jwt.version>0.9.1</jwt.version>
@@ -74,20 +42,93 @@
 		
 		<commons-configuration.version>1.9</commons-configuration.version>
 		<transactions-osgi.version>3.9.3</transactions-osgi.version>
-		<redisson-spring-boot-starter.version>3.11.5</redisson-spring-boot-starter.version>
 		<json.version>20180130</json.version>
 		<cas-client-core.version>3.4.1</cas-client-core.version>
 		<dozer.version>5.4.0</dozer.version>
 		<logback-gelf.version>4.0.2</logback-gelf.version>
-		<spring-boot-starter-quartz.version>2.3.2.RELEASE</spring-boot-starter-quartz.version>
-		<sqljdbc4.version>4.0</sqljdbc4.version>
 		<commons-collections4.version>4.4</commons-collections4.version>
 		<hutool-captcha.version>5.3.8</hutool-captcha.version>
 		<hutool.version>4.5.5</hutool.version>
 		
+		<sqljdbc4.version>4.0</sqljdbc4.version>
+		<mysql-connector.version>5.1.46</mysql-connector.version>
 		<ojdbc14.version>1.0</ojdbc14.version>
+		
 		<font-msyh.version>1.0</font-msyh.version>
 	</properties>
+	
+	<profiles>
+		<profile>
+			<id>loc</id>
+			<properties>
+				<profileActive>loc</profileActive>
+				<distributionManagement.repository.id>loc-repo</distributionManagement.repository.id>
+				<distributionManagement.repository.name>Nexus Release Repository</distributionManagement.repository.name>
+				<distributionManagement.repository.url>http://nexusuat.moco.com:80/repository/maven-releases/</distributionManagement.repository.url>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<jdk>1.8</jdk>
+			</activation>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<profileActive>dev</profileActive>
+				<distributionManagement.repository.id>uat-repo</distributionManagement.repository.id>
+				<distributionManagement.repository.name>Nexus Release Repository</distributionManagement.repository.name>
+				<distributionManagement.repository.url>http://nexusuat.moco.com:80/repository/maven-releases/</distributionManagement.repository.url>
+			</properties>
+		</profile>
+		<profile>
+			<id>uat</id>
+			<properties>
+				<profileActive>uat</profileActive>
+				<distributionManagement.repository.id>uat-repo</distributionManagement.repository.id>
+				<distributionManagement.repository.name>Nexus Release Repository</distributionManagement.repository.name>
+				<distributionManagement.repository.url>http://nexusuat.moco.com:80/repository/maven-releases/</distributionManagement.repository.url>
+			</properties>
+		</profile>
+		<profile>
+			<id>prd</id>
+			<properties>
+				<profileActive>prd</profileActive>
+				<distributionManagement.repository.id>prd-repo</distributionManagement.repository.id>
+				<distributionManagement.repository.name>Nexus Release Repository</distributionManagement.repository.name>
+				<distributionManagement.repository.url>http://nexus.moco.com:80/repository/maven-releases/</distributionManagement.repository.url>
+			</properties>
+		</profile>
+	</profiles>
+
+	<!-- 针对EPO-NEXUS私库发布 -->
+	<distributionManagement>
+		<repository>
+			<id>${distributionManagement.repository.id}</id>
+			<name>${distributionManagement.repository.name}</name>
+			<url>${distributionManagement.repository.url}</url>
+		</repository>
+	</distributionManagement>
+	<!-- 暂时移除spring-milestones，否则导致jenkins下游project编译时找不到ojdbc依赖 <repositories> 
+		<repository> <id>spring-milestones</id> <name>Spring Milestones</name> <url>https://repo.spring.io/libs-milestone</url> 
+		<snapshots> <enabled>false</enabled> </snapshots> </repository> </repositories> -->
+	
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.10</version>
+	</parent>
+
+	<modules>
+		<module>chok2-common</module>
+		<module>chok2-component</module>
+		<module>chok2-util</module>
+		<module>chok2-lock</module>
+		<module>chok2-jwt</module>
+		<module>chok2-devwork-controller</module>
+		<module>chok2-devwork-service</module>
+		<module>chok2-devwork-dao</module>
+		<module>chok2-devwork-pojo</module>
+	</modules>
 
 	<dependencies>
 		<dependency>
@@ -393,11 +434,11 @@
 				<version>${jasper.version}</version>
 			</dependency>
 			<!-- 自制jasperreports字体包。两种方案 -->
-			<!-- 1.添加至本地jar命令：mvn install:install-file -Dfile=font-msyh.jar -DgroupId=com.chok 
+			<!-- 1.添加至本地jar命令：mvn install:install-file -Dfile=font-msyh.jar -DgroupId=com.chok2 
 				-DartifactId=font-msyh -Dversion=1.0 -Dpackaging=jar -->
 			<!-- 2.上传至nexus私服 -->
 			<dependency>
-				<groupId>com.chok</groupId>
+				<groupId>com.chok2</groupId>
 				<artifactId>font-msyh</artifactId>
 				<version>${font-msyh.version}</version>
 			</dependency>
@@ -478,25 +519,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<!-- 针对EPO-NEXUS私库发布 -->
-	<distributionManagement>
-		<repository>
-			<id>maven-releases</id>
-			<name>Nexus Release Repository</name>
-			<url>http://nexus.moco.com:80/repository/maven-releases/</url>
-			<layout>default</layout>
-		</repository>
-		<snapshotRepository>
-			<id>maven-snapshots</id>
-			<name>Nexus Snapshot Repository</name>
-			<url>http://nexus.moco.com:80/repository/maven-snapshots/</url>
-			<layout>legacy</layout>
-		</snapshotRepository>
-	</distributionManagement>
-	<!-- 暂时移除spring-milestones，否则导致jenkins下游project编译时找不到ojdbc依赖 <repositories> 
-		<repository> <id>spring-milestones</id> <name>Spring Milestones</name> <url>https://repo.spring.io/libs-milestone</url> 
-		<snapshots> <enabled>false</enabled> </snapshots> </repository> </repositories> -->
 
 	<build>
 		<!-- 指定打包时还需包含的资源文件，若不配置会遗漏 -->
