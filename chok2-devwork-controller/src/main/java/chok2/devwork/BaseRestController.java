@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import chok2.util.JasperUtil;
-import chok2.util.POIUtil;
-import chok2.util.TimeUtil;
+import chok2.util.core.TimeUtil;
+import chok2.util.view.JasperUtil;
+import chok2.util.view.POIUtil;
+
 
 public class BaseRestController
 {
