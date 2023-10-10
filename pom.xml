@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.chok2</groupId>
 	<artifactId>chok2-parent</artifactId>
-	<version>2.0.0</version>
+	<version>2.1.0</version>
 	<packaging>pom</packaging>
 	<name>chok2-parent</name>
 
@@ -126,7 +126,8 @@
 		<module>chok2-component</module>
 		<module>chok2-lock</module>
 		<module>chok2-jwt</module>
-		<module>chok2-devwork-controller</module>
+		<module>chok2-devwork-light-controller</module>
+		<module>chok2-devwork-heavy-controller</module>
 		<module>chok2-devwork-service</module>
 		<module>chok2-devwork-dao</module>
 		<module>chok2-devwork-pojo</module>
@@ -506,7 +507,12 @@
 			</dependency>
 			<dependency>
 				<groupId>com.chok2</groupId>
-				<artifactId>chok2-devwork-controller</artifactId>
+				<artifactId>chok2-devwork-light-controller</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.chok2</groupId>
+				<artifactId>chok2-devwork-heavy-controller</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

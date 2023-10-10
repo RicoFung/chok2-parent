@@ -4,14 +4,14 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>chok2-devwork-controller</artifactId>
-	<name>chok2-devwork-controller</name>
+	<artifactId>chok2-devwork-heavy-controller</artifactId>
+	<name>chok2-devwork-heavy-controller</name>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>com.chok2</groupId>
 		<artifactId>chok2-parent</artifactId>
-		<version>2.0.0</version>
+		<version>2.1.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
