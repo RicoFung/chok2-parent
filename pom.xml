@@ -126,8 +126,8 @@
 		<module>chok2-component</module>
 		<module>chok2-lock</module>
 		<module>chok2-jwt</module>
-		<module>chok2-devwork-light-controller</module>
-		<module>chok2-devwork-heavy-controller</module>
+		<module>chok2-devwork-controller-light</module>
+		<module>chok2-devwork-controller-heavy</module>
 		<module>chok2-devwork-service</module>
 		<module>chok2-devwork-dao</module>
 		<module>chok2-devwork-pojo</module>
@@ -507,12 +507,12 @@
 			</dependency>
 			<dependency>
 				<groupId>com.chok2</groupId>
-				<artifactId>chok2-devwork-light-controller</artifactId>
+				<artifactId>chok2-devwork-controller-light</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.chok2</groupId>
-				<artifactId>chok2-devwork-heavy-controller</artifactId>
+				<artifactId>chok2-devwork-controller-heavy</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
