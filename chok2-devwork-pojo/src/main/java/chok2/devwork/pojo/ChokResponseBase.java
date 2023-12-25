@@ -1,22 +1,22 @@
 package chok2.devwork.pojo;
 
-public abstract class ChokDtoBase<T> implements ChokDtoInterface<T>
+public abstract class ChokResponseBase<T> implements ChokResponseInterface<T>
 {
 	private static final long serialVersionUID = 1L;
 	
 	private boolean	success		= true;
-	private String	code		= ChokDtoConstants.SUCCESS_CODE;
+	private String	code		= ChokResponseConstants.SUCCESS_CODE;
 	private String	msg			= "";
 	private String	path		= "";
 	private String	timestamp	= "";
 	private T		data;
 	
-	public ChokDtoBase()
+	public ChokResponseBase()
 	{
 		super();
 	}
 
-	public ChokDtoBase(T data)
+	public ChokResponseBase(T data)
 	{
 		super();
 		this.data = data;
@@ -91,7 +91,7 @@ public abstract class ChokDtoBase<T> implements ChokDtoInterface<T>
 	@Override
 	public String toString()
 	{
-		return "ChokResultObject [success=" + success + ", code=" + code + ", msg=" + msg + ", path=" + path
+		return "ChokResponseBase [success=" + success + ", code=" + code + ", msg=" + msg + ", path=" + path
 				+ ", timestamp=" + timestamp + ", data=" + data + "]";
 	}
 	

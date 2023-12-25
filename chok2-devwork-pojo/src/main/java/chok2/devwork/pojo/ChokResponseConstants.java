@@ -1,6 +1,6 @@
 package chok2.devwork.pojo;
 
-public class ChokDtoConstants
+public class ChokResponseConstants
 {
 	public final static String SUCCESS_CODE = "20000";
 	public final static String ERROR_CODE1 = "20001";
